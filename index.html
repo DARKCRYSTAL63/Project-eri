@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eri Silk | Handcrafted Traditional Silk Dresses</title>
+    <meta name="description" content="Customizable traditional silk dresses for women. Handwoven Eri silk with modern designs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="/">ERI SILK</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#customize">Customize</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <a href="#search"><i class="fas fa-search"></i></a>
+            <a href="#account"><i class="fas fa-user"></i></a>
+            <a href="#cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu (hidden on desktop) -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#customize">Customize</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Handwoven Luxury</h1>
+            <p>Customizable traditional silk dresses crafted with sustainable Eri silk</p>
+            <a href="#collections" class="btn">Explore Collections</a>
+        </div>
+    </section>
+    
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <h2>Our Collections</h2>
+        <div class="collection-grid">
+            <!-- Collection items will be dynamically loaded -->
+        </div>
+    </section>
+    
+    <!-- Customization Section -->
+    <section id="customize" class="customize">
+        <div class="customize-content">
+            <h2>Create Your Unique Dress</h2>
+            <p>Choose from our customization options to design a dress that's uniquely yours</p>
+            <a href="#customizer" class="btn btn-outline">Start Designing</a>
+        </div>
+        <div class="customize-image">
+            <!-- Image will be background in CSS -->
+        </div>
+    </section>
+    
+    <!-- Product Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-view">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ERI SILK</h3>
+                <p>Handcrafted traditional silk dresses with modern elegance.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#collections">Shop</a></li>
+                    <li><a href="#customize">Customize</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#sustainability">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="#shipping">Shipping & Returns</a></li>
+                    <li><a href="#size-guide">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p>Subscribe for updates</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Eri Silk. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+    
+    mobileMenuToggle.addEventListener('click', function() {
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+    
+    overlay.addEventListener('click', function() {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
+    
+    // Close mobile menu when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+    
+    // Sample product data (in a real app, this would come from an API)
+    const products = [
+        {
+            id: 1,
+            name: 'Traditional Eri Silk Mekhela',
+            price: 299,
+            image: 'product1.jpg',
+            description: 'Handwoven Eri silk mekhela with traditional motifs. Customizable colors and patterns available.',
+            colors: ['#8B5A2B', '#A67C52', '#5D4037', '#3E2723'],
+            sizes: ['S', 'M', 'L', 'XL']
+        },
+        {
+            id: 2,
+            name: 'Modern Eri Silk Saree',
+            price: 349,
+            image: 'product2.jpg',
+            description: 'Contemporary design Eri silk saree with minimalistic borders. Perfect for modern occasions.',
+            colors: ['#F8F1E5', '#D7CCC8', '#BCAAA4', '#8D6E63'],
+            sizes: ['One Size']
+        },
+        {
+            id: 3,
+            name: 'Eri Silk Dress with Embroidery',
+            price: 399,
+            image: 'product3.jpg',
+            description: 'Elegant Eri silk dress with hand-embroidered details. Available in various embroidery patterns.',
+            colors: ['#5D4037', '#3E2723', '#263238', '#000000'],
+            sizes: ['S', 'M', 'L']
+        },
+        {
+            id: 4,
+            name: 'Casual Eri Silk Kurta',
+            price: 249,
+            image: 'product4.jpg',
+            description: 'Everyday wear Eri silk kurta with comfortable fit. Perfect for both casual and formal occasions.',
+            colors: ['#F8F1E5', '#D7CCC8', '#A67C52', '#8B5A2B'],
+            sizes: ['XS', 'S', 'M', 'L', 'XL']
+        }
+    ];
+    
+    // Load products into collection grid
+    const collectionGrid = document.querySelector('.collection-grid');
+    
+    products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.classList.add('collection-item');
+        productItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="collection-info">
+                <h3>${product.name}</h3>
+                <span class="price">$${product.price}</span>
+            </div>
+            <button class="quick-view" data-id="${product.id}">Quick View</button>
+        `;
+        collectionGrid.appendChild(productItem);
+    });
+    
+    // Quick View Modal
+    const modal = document.getElementById('quickViewModal');
+    const modalContent = document.querySelector('.modal-product-view');
+    const closeModal = document.querySelector('.close-modal');
+    const quickViewButtons = document.querySelectorAll('.quick-view');
+    
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = parseInt(this.getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+            
+            if (product) {
+                modalContent.innerHTML = `
+                    <div class="product-images">
+                        <img src="${product.image}" alt="${product.name}" class="main-image">
+                        <div class="thumbnail-container">
+                            <img src="${product.image}" alt="Thumbnail 1" class="thumbnail active">
+                            <img src="product-detail1.jpg" alt="Thumbnail 2" class="thumbnail">
+                            <img src="product-detail2.jpg" alt="Thumbnail 3" class="thumbnail">
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h2>${product.name}</h2>
+                        <span class="price">$${product.price}</span>
+                        <p class="description">${product.description}</p>
+                        
+                        <div class="color-options">
+                            <h4>Color</h4>
+                            <div class="color-selector">
+                                ${product.colors.map(color => `
+                                    <div class="color-option" style="background-color: ${color};" data-color="${color}"></div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="size-options">
+                            <h4>Size</h4>
+                            <div class="size-selector">
+                                ${product.sizes.map(size => `
+                                    <div class="size-option" data-size="${size}">${size}</div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <h4>Quantity</h4>
+                            <div class="quantity-control">
+                                <button class="quantity-minus">-</button>
+                                <input type="number" value="1" min="1" class="quantity-input">
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn add-to-cart">Add to Cart</button>
+                        <button class="btn btn-outline customize-btn">Customize This Item</button>
+                    </div>
+                `;
+                
+                modal.style.display = 'block';
+                document.body.classList.add('no-scroll');
+                
+                // Initialize modal functionality
+                initModalFunctionality();
+            }
+        });
+    });
+    
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+    });
+    
+    function initModalFunctionality() {
+        // Color selection
+        const colorOptions = document.querySelectorAll('.color-option');
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Size selection
+        const sizeOptions = document.querySelectorAll('.size-option');
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Quantity control
+        const quantityMinus = document.querySelector('.quantity-minus');
+        const quantityPlus = document.querySelector('.quantity-plus');
+        const quantityInput = document.querySelector('.quantity-input');
+        
+        quantityMinus.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        quantityPlus.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+        });
+        
+        // Thumbnail click
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.querySelector('.main-image');
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                mainImage.src = this.src;
+            });
+        });
+    }
+    
+    // Simple cart functionality
+    let cartCount = 0;
+    const cartCountElement = document.querySelector('.cart-count');
+    
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('add-to-cart')) {
+            cartCount++;
+            cartCountElement.textContent = cartCount;
+            
+            // Show added to cart message
+            const addedMessage = document.createElement('div');
+            addedMessage.classList.add('added-to-cart-message');
+            addedMessage.textContent = 'Added to cart!';
+            document.body.appendChild(addedMessage);
+            
+            setTimeout(() => {
+                addedMessage.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                addedMessage.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(addedMessage);
+                }, 300);
+            }, 2000);
+        }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Account for fixed header
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add some CSS for the added to cart message
+    const style = document.createElement('style');
+    style.textContent = `
+        .added-to-cart-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3000;
+        }
+        
+        .added-to-cart-message.show {
+            opacity: 1;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-option.selected {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .size-option {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .size-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .no-scroll {
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .modal-product-view {
+                flex-direction: row;
+            }
+            
+            .product-images {
+                flex: 1;
+                padding-right: 40px;
+            }
+            
+            .product-details {
+                flex: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+    </script>
+</body>
+</html>
